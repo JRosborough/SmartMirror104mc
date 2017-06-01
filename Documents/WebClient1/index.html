@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="style.css"></script>
+  <!-- <script type="text/javascript" src="http://dmvm.coventry.ac.uk:8000/socket.io.js"></script> -->
+<script src="http://dmvm.coventry.ac.uk:8000/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+  <button type="button" class="messagebutton" onclick="doIt()">Click to change colour</button>
+
+
+</body>
+
+
+<script>
+var socket = io('http://dmvm.coventry.ac.uk:8888');
+
+function doIt(){
+  socket.emit('my other event', { my: 'data' });
+  console.log("something exciting")
+}
+io.connect("http://localhost/dummyclient2");
+
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('message', "this is a test");
+  });
+
+</script>
+
+
+</html>
